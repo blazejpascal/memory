@@ -1,0 +1,32 @@
+body {
+  padding: 10px;
+}
+.board {
+  margin: 30px auto;
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+  width: 550px;
+  height: 444px;
+  border: 2px solid #ddd;
+}
+.kafelek {
+  position: absolute;
+  cursor: pointer;
+  float: left;
+  width: 100px;
+  height: 100px;
+  border: 2px solid #ddd;
+}
+.kafelek {
+  position: absolute;
+  cursor: pointer;
+  loaf: left;
+  width:100px
+  heigth: 100px;
+  backgroud:#f6da17 url(title.png) center center no-repeat;
+  margin: 10 px;
+}
+.kafelek:hover {
+  background-color:#F7C11A;
+}
