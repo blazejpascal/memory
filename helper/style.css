@@ -1,0 +1,15 @@
+ner {
+		margin-left: 10vw;
+			margin-right: 10vw;
+				width: 80vw;
+			}
+			.row {
+					width: 100%;
+				}
+				.tile {
+						display: inline-block;
+							width: 20vw;
+								height: 20vw;
+									margin: 5px;
+										background-color: orange;
+									}
