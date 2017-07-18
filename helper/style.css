@@ -1,5 +1,5 @@
 ner {
-		margin-left: 10vw;
+		margin-left: 15vw;
 			margin-right: 10vw;
 				width: 80vw;
 			}
@@ -13,3 +13,8 @@ ner {
 									margin: 5px;
 										background-color: orange;
 									}
+	.startGame {
+		margin-left: 40vw;
+			margin-right: 40vw;
+				width: 20vw;
+	}
