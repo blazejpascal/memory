@@ -1,6 +1,6 @@
 var cardsSelected = 0;
 var pairs = 0;
-$(document).ready(function() {
+
 		var cardHandler = function (event){
 					if (cardsSelected >= 2) {
 									$(".tile").css("background-color", "orange");

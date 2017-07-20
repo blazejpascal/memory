@@ -10,36 +10,85 @@
         console.log("dawaj");
       };
       $(".startGame").on('click', tasowanko);
+			function () {
+				var arr = [black, red, green, purple, pink, orange, gold, silver];
+				for (i = 0; i <= arr.length; i++) {
+					this.color = arr[i];
+				}
 
-}});*/
+}});
+var cardsSelected = 0;
+var pairs = 0;
+
+		var cardHandler = function (event){
+					if (cardsSelected >= 2) {
+									$(".tile").css("background-color", "orange");
+									cardsSelected = 0;
+								}
+			    	$(event.target).css("background-color", "red");
+			    	cardsSelected += 1;
+							if (cardsSelected >=2) {}
+			    };
+	    $(".tile").on("click", cardHandler);
+*/
+
+
+
 class Card {
-	constructor(id, ifClick, hide) {
+	constructor(id,color, ifClick, hide) {
 	this.id = id;
 	this.ifClick = ifClick;
 	this.hide = hide;
+	this.color= color;
 	}
 }
-class Deck extends Card {
-	constructor(set, id) {
-		super(set);
+
+class Deck {
+	constructor(set) {
 		this.set = [set];
 		}
- addCard() {
-		for(i=0; i<=set.lenght; i++) {
-			newDeck.push(id);
-			console.log(newDeck[i]);
-}}
-var divLenght = $(".tile");
-console.log(divLenght.length);
+}
+var divLength = $(".tile");
+console.log(divLength.length);
 
 
-function gameStart(){
-	var newDeck = new Deck([]);
-	var firstCard = new Card(0 , true, true);
-	var secondCard = new Card(1 , true, true);
-	var thirdCard = new Card(2 , true, true);
-	var fourthCard = new Card(3 , true, true);
-	
+
+function gameStart(){ //Creating 16 new card with id colors from array.
+	var newDeck = new Deck();
+	var colors = ["black", "red", "green", "purple", "pink", "orange", "gold", "silver", "black", "red", "green", "purple", "pink", "orange", "gold", "silver"];
+	for(var i = 0; i<16; i++) {
+		newDeck.set[i] = new Card(i,colors[i], true, true);
+				//newDeck.set.push(new Card(i));
+	}
+	console.log(newDeck.set);
+	console.log(newDeck.set.length);
+
+		function mixArray() { //Shuffling deck array.
+			var arr = newDeck.set;
+				for (var i=0; i<arr.length; i++) {
+				var j = Math.floor(Math.random() * arr.length);
+				var temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+
 		}
+		console.log(arr);
+		return arr;
+		}
+		mixArray();
+
+			var addId = function addIdCard() { // shuld add js to html objects
+				var arr = newDeck.set;
+					for(var i = 0; i<arr.length;i++);
+					var newColor = arr[i].color;//TODO
+					console.log(arr[i].color)
+					//$("#ii").css ("background-color", "newDeck.set[i].color");
+					//$("#4").css ("background-color", "red");
+					$("#4").css ("background-color", "newColor");
+					//$(event.target).css("background-color", "red");
+					console.log("working")
+					//console.log(arr.length, newDeck.set.length, arr[3].color, newDeck.set[3].color);
+			}
+			$(".tile").on("click", addId);
 }
 gameStart();
