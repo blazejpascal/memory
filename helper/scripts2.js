@@ -55,7 +55,8 @@ console.log(divLength.length);
 
 function gameStart(){ //Creating 16 new card with id colors from array.
 	var newDeck = new Deck();
-	var colors = ["black", "red", "green", "purple", "pink", "orange", "gold", "silver", "black", "red", "green", "purple", "pink", "orange", "gold", "silver"];
+	var colors = ["black", "red", "green", "purple", "pink", "orange", "gold", "silver",
+	 "black", "red", "green", "purple", "pink", "orange", "gold", "silver"];
 	for(var i = 0; i<16; i++) {
 		newDeck.set[i] = new Card(i,colors[i], true, true);
 				//newDeck.set.push(new Card(i));
@@ -70,25 +71,30 @@ function gameStart(){ //Creating 16 new card with id colors from array.
 				var temp = arr[i];
 				arr[i] = arr[j];
 				arr[j] = temp;
-
 		}
 		console.log(arr);
 		return arr;
 		}
 		mixArray();
 
-			var addId = function addIdCard() { // shuld add js to html objects
-				var arr = newDeck.set;
-					for(var i = 0; i<arr.length;i++);
-					var newColor = arr[i].color;//TODO
-					console.log(arr[i].color)
-					//$("#ii").css ("background-color", "newDeck.set[i].color");
-					//$("#4").css ("background-color", "red");
-					$("#4").css ("background-color", "newColor");
-					//$(event.target).css("background-color", "red");
-					console.log("working")
-					//console.log(arr.length, newDeck.set.length, arr[3].color, newDeck.set[3].color);
+			var addId = function addIdCard() { //  add js to html objects
+
+				for (var i = 0; i<16; i++) {
+				var div = document.getElementById(i);
+				div.style.backgroundColor = newDeck.set[i].color;
+				//console.log(newDeck.set[i].color)
+				//console.log(div);
+				}
 			}
-			$(".tile").on("click", addId);
+			$(".startGame").on("click", addId);
+
+			$( ".tile" ).click(function() {
+				var clickedCardColor = this.color;
+
+		    console.log(newDeck.set[1].color);
+		    console.log(newDeck.set[2].color);
+				console.log(this.color);
+		    $("#i").hide( "slow" );
+		});
 }
 gameStart();
