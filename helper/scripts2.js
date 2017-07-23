@@ -86,15 +86,41 @@ function gameStart(){ //Creating 16 new card with id colors from array.
 				//console.log(div);
 				}
 			}
-			$(".startGame").on("click", addId);
+			$(".startGame").on("click", addId); //TODO dlaczego jak dodam nawiasy do addId to zmienia dzialanie funkcji
 
-			$( ".tile" ).click(function() {
-				var clickedCardColor = this.color;
+			var cardsSelected = 0;
+			var pairs = 0;
+		function hideCard(){
 
-		    console.log(newDeck.set[1].color);
+				if(cardsSelected == 0) {
+					$( ".tile" ).click(function(event) {
+						var a = $(event.target).attr("id");
+						var b = newDeck.set[a].color;
+								console.log(cardsSelected)
+								cardsSelected += 1;
+								console.log("if1 working");
+								console.log(cardsSelected)
+							})
+						}
+				if(cardsSelected >= 1) {
+					$( ".tile" ).click(function(event) {
+						var c = $(event.target).attr("id");
+						var d = newDeck.set[c].color;
+						console.log("if2 working");
+
+		})
+		}
+
+
+				/*//var clickedCardColor = this.color;
+				console.log(a);
+				console.log(b);
+		    /*console.log(newDeck.set[1].color);
 		    console.log(newDeck.set[2].color);
 				console.log(this.color);
-		    $("#i").hide( "slow" );
-		});
+		    $("#i").hide( "slow" );*/
+
+		};
+		$(".tile").on("click", hideCard());
 }
 gameStart();

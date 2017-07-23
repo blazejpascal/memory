@@ -52,7 +52,7 @@ products.forEach(function(numerki, zapadka) { TODO nie ma znaczenie nazwa parame
 function generateArr() { // dlaczego funkcja tworzy a pól undefined?
   var a =  Math.floor(Math.random() * 10);
   var newArr = new Array(a);
-  //console.log(newArr.length);
+  console.log(newArr.length);
 
   for (var i=0; i<a; i++) { //TODO dlaczego tu musi byc a a nie newArr.length - niekonczocy sie loop
     var b = Math.floor(Math.random() * 10);
