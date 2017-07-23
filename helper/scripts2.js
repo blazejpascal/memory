@@ -90,26 +90,40 @@ function gameStart(){ //Creating 16 new card with id colors from array.
 
 			var cardsSelected = 0;
 			var pairs = 0;
-		function hideCard(){
+		 function hideCard(){
 
-				if(cardsSelected == 0) {
-					$( ".tile" ).click(function(event) {
-						var a = $(event.target).attr("id");
-						var b = newDeck.set[a].color;
-								console.log(cardsSelected)
-								cardsSelected += 1;
+			if(cardsSelected == 0) {
+						 a = $(event.target).attr("id");
+						 b = newDeck.set[a].color;
 								console.log("if1 working");
-								console.log(cardsSelected)
-							})
-						}
-				if(cardsSelected >= 1) {
-					$( ".tile" ).click(function(event) {
-						var c = $(event.target).attr("id");
-						var d = newDeck.set[c].color;
+								console.log(a , b);
+								pairs +=1;
+								cardsSelected += 1;
+							}
+					else {
+						 c = $(event.target).attr("id");
+						 d = newDeck.set[c].color;
 						console.log("if2 working");
+						console.log(c , d);
+						cardsSelected = 0;
+						pairs += 1;
+						console.log("pairs = " + pairs)
+						compareCards();
+					}
+				}
+					function compareCards(){
+						if (b==d) {
+							console.log("card compare works" + a + c);
+							$("[id=a]").hide();
+							$("[id=b]").hide();
+						}
+						else {
+							console.log("card compare dont work")
+						}
+					}
 
-		})
-		}
+
+
 
 
 				/*//var clickedCardColor = this.color;
@@ -120,7 +134,7 @@ function gameStart(){ //Creating 16 new card with id colors from array.
 				console.log(this.color);
 		    $("#i").hide( "slow" );*/
 
-		};
-		$(".tile").on("click", hideCard());
+
+		$(".tile").on("click", hideCard,);
 }
 gameStart();

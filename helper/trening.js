@@ -83,4 +83,34 @@ console.log(div);
     console.log(newDeck.set[j].color);
     $("#i").hide( "slow" );
 });
-//};*/
+//};
+
+
+ar cardsSelected = 0;
+var pairs = 0;
+var hideCard = function hideCard(){
+
+  if(cardsSelected == 0) {
+    $( ".tile" ).click(function(event) {
+      var a = $(event.target).attr("id");
+      var b = newDeck.set[a].color;
+          console.log(cardsSelected)
+          cardsSelected += 1;
+          console.log("if1 working");
+          console.log(cardsSelected)
+        })
+      }
+  if(cardsSelected >= 1) {
+    $( ".tile" ).click(function(event) {
+      var c = $(event.target).attr("id");
+      var d = newDeck.set[c].color;
+      console.log("if2 working");
+      cardsSelected = 0;
+
+})
+}
+
+
+
+
+*/
