@@ -1,39 +1,3 @@
-/*$(document).ready(function() {
-		var tasowanko = function() {
-    var parent = $(".row");
-    var divs = parent.children();
-		console.log(divs.length);
-    while (divs.length) {
-			        parent.append(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
-    }
-    /*  var showText = function(){
-        console.log("dawaj");
-      };
-      $(".startGame").on('click', tasowanko);
-			function () {
-				var arr = [black, red, green, purple, pink, orange, gold, silver];
-				for (i = 0; i <= arr.length; i++) {
-					this.color = arr[i];
-				}
-
-}});
-var cardsSelected = 0;
-var pairs = 0;
-
-		var cardHandler = function (event){
-					if (cardsSelected >= 2) {
-									$(".tile").css("background-color", "orange");
-									cardsSelected = 0;
-								}
-			    	$(event.target).css("background-color", "red");
-			    	cardsSelected += 1;
-							if (cardsSelected >=2) {}
-			    };
-	    $(".tile").on("click", cardHandler);
-*/
-
-
-
 class Card {
 	constructor(id,color, ifClick, hide) {
 	this.id = id;
@@ -48,93 +12,89 @@ class Deck {
 		this.set = [set];
 		}
 }
-var divLength = $(".tile");
-console.log(divLength.length);
-
-
-
 function gameStart(){ //Creating 16 new card with id colors from array.
 	var newDeck = new Deck();
-	var colors = ["black", "red", "green", "purple", "pink", "orange", "gold", "silver",
-	 "black", "red", "green", "purple", "pink", "orange", "gold", "silver"];
+	var colors = ["black", "red", "green", "purple", "pink", "brown", "blue", "silver",
+	 "black", "red", "green", "purple", "pink", "brown", "blue", "silver"];
 	for(var i = 0; i<16; i++) {
-		newDeck.set[i] = new Card(i,colors[i], true, true);
+		newDeck.set[i] = new Card(i,colors[i], false, true);
 				//newDeck.set.push(new Card(i));
 	}
-	console.log(newDeck.set);
-	console.log(newDeck.set.length);
-
 		function mixArray() { //Shuffling deck array.
 			var arr = newDeck.set;
-				for (var i=0; i<arr.length; i++) {
+			for (var i=0; i<arr.length; i++) {
 				var j = Math.floor(Math.random() * arr.length);
 				var temp = arr[i];
 				arr[i] = arr[j];
 				arr[j] = temp;
-		}
-		console.log(arr);
+				}
 		return arr;
 		}
 		mixArray();
-
-			var addId = function addIdCard() { //  add js to html objects
-
-				for (var i = 0; i<16; i++) {
-				var div = document.getElementById(i);
-				div.style.backgroundColor = newDeck.set[i].color;
-				//console.log(newDeck.set[i].color)
-				//console.log(div);
-				}
+		var addId = function addIdCard() { //  add js to html objects
+		for (var i = 0; i<16; i++) {
+			var div = document.getElementById(i);
 			}
-			$(".startGame").on("click", addId); //TODO dlaczego jak dodam nawiasy do addId to zmienia dzialanie funkcji
+		}
+			addId();
+			$(".startGame").on("click", function(){location.reload()}); //TODO dlaczego jak dodam nawiasy do addId to zmienia dzialanie funkcji
 
 			var cardsSelected = 0;
 			var pairs = 0;
+			selectedCardId = null;
+			previousCardId = null;
 		 function hideCard(){
+			 console.log(cardsSelected);
+			 if(cardsSelected == 0) {
+			 	if (previousCardId) {
+			 	 $("#" + selectedCardId).css('backgroundColor','orange')
+			 	 $("#" + previousCardId).css('backgroundColor','orange')
+			 	 }
+			 }
+			 if (selectedCardId) {
+			 previousCardId = selectedCardId;
+			 }
+			 selectedCardId = $(event.target).attr("id"); // id of selected card
+			 console.log("selected: " + selectedCardId);
+			 if (!cardsSelected) {
+			 	selectedCardColor1 = newDeck.set[selectedCardId].color; //color of seleted card
+				}
+			 else {
+				selectedCardColor2 = newDeck.set[selectedCardId].color;
+			 }
+			 var div = document.getElementById(selectedCardId);
+			 div.style.backgroundColor = newDeck.set[selectedCardId].color;
 
 			if(cardsSelected == 0) {
-						 a = $(event.target).attr("id");
-						 b = newDeck.set[a].color;
-								console.log("if1 working");
-								console.log(a , b);
-								pairs +=1;
-								cardsSelected += 1;
+				cardsSelected += 1;
 							}
 					else {
-						 c = $(event.target).attr("id");
-						 d = newDeck.set[c].color;
-						console.log("if2 working");
-						console.log(c , d);
+						//console.log("if2 working");
 						cardsSelected = 0;
-						pairs += 1;
-						console.log("pairs = " + pairs)
 						compareCards();
 					}
 				}
 					function compareCards(){
-						if (b==d) {
-							console.log("card compare works" + a + c);
-							$("[id=a]").hide();
-							$("[id=b]").hide();
+						var mistakes = mistakes;
+						if (selectedCardColor1 == selectedCardColor2) {
+							$("#" + selectedCardId).css('visibility','hidden')
+							$("#" + previousCardId).css('visibility','hidden')
+							var out = pairs += 1;
+							document.getElementsByName('output')[0].value= out;
+							console.log(pairs);
+								if (out == 8) {alert("Game over")}
+							}
+								if (selectedCardId == previousCardId) {
+							console.log("else if workig")
+							$("#" + selectedCardId).css('visibility','visible')
+							pairs -=1;
 						}
 						else {
-							console.log("card compare dont work")
+							mistakes += 1;
+							document.getElementsByName('output1')[0].value= out;
 						}
 					}
-
-
-
-
-
-				/*//var clickedCardColor = this.color;
-				console.log(a);
-				console.log(b);
-		    /*console.log(newDeck.set[1].color);
-		    console.log(newDeck.set[2].color);
-				console.log(this.color);
-		    $("#i").hide( "slow" );*/
-
-
-		$(".tile").on("click", hideCard,);
+	$(".tile").on("click", hideCard);
 }
+
 gameStart();

@@ -8,8 +8,8 @@ ner {
 				}
 				.tile {
 						display: inline-block;
-							width: 20vw;
-								height: 20vw;
+							width: 15vw;
+								height: 15vw;
 									margin: 5px;
 										background-color: orange;
 									}
@@ -17,4 +17,10 @@ ner {
 		margin-left: 40vw;
 			margin-right: 40vw;
 				width: 20vw;
+	}
+	.score {
+		margin-left: 40vw;
+			margin-right: 40vw;
+				width: 20vw;
+					margin-top: 10px;
 	}
